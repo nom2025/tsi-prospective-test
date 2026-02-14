@@ -215,76 +215,80 @@ def update_prospective_log(tsi_df, gnss_observation_date):
     前向き検証ログに新しいデータを追記する。
 
     ===== 絶対ルール =====
-    1. 既存データは上書きしない（追記のみ）
-    2. 過去の行を修正・削除しない
+    1. 既存ファイルは読み取り専用。新しい行を末尾にappendするだけ
+    2. 過去の行は絶対に修正・削除しない
     3. GNSSデータが後日再解析されても、過去のTSI値を再計算しない
+    4. GNSSの最終観測日が更新されたときにだけ記録する
+    5. 同じobservation_dateの二重記録を禁止する
     =======================
 
-    各行に以下の監査列を必ず記録する:
+    各行の監査列（科学的証拠の核心）:
     - observation_date: GNSSデータの最終観測日（計算に使ったデータの鮮度）
-    - publish_date: このスクリプトが実行された日時（GitHub Actionsの実行日）
-    これにより第三者が「未来情報を使っていない」ことを確認できる。
+    - publish_date: このスクリプトが実行された日（GitHub Actionsの実行日）
+    第三者がこの2列で「未来情報を使っていない」ことを確認できる。
     """
     freeze_date = pd.Timestamp(FROZEN_PARAMS["freeze_date"])
 
-    # 検証対象は凍結日以降のみ
-    new_data = tsi_df[tsi_df.index >= freeze_date].copy()
-
-    if len(new_data) == 0:
+    # TSI時系列から最新の値を取得（observation_dateに対応するTSI）
+    latest_tsi_date = tsi_df.index.max()
+    if latest_tsi_date < freeze_date:
         print("  凍結日以降のデータなし")
         return
 
-    # 既存ログ読み込み（追記モード）
-    if LOG_FILE.exists():
-        existing = pd.read_csv(LOG_FILE, parse_dates=["date"], index_col="date")
-        existing_dates = set(existing.index)
+    # GNSSの最終観測日が変わっていなければ記録しない
+    # （毎日Actionsが動いても、GNSSデータが更新されない限りログは増えない）
+    if LOG_FILE.exists() and LOG_FILE.stat().st_size > 0:
+        existing = pd.read_csv(LOG_FILE)
 
-        # === 整合性チェック ===
-        # 再計算で過去の値が変わっていないか検証（GNSSデータ再解析による汚染検出）
-        overlap_dates = set(new_data.index) & existing_dates
-        if overlap_dates:
-            drift_detected = False
-            for d in sorted(overlap_dates):
-                old_tsi = existing.loc[d, "TSI"] if "TSI" in existing.columns else np.nan
-                new_tsi = new_data.loc[d, "TSI"]
-                if pd.notna(old_tsi) and pd.notna(new_tsi) and abs(old_tsi - new_tsi) > 1e-6:
-                    drift_detected = True
-                    print(f"  [警告] {d.date()} のTSI値がドリフト: "
-                          f"記録済み={old_tsi:.6f} → 再計算={new_tsi:.6f} (差={new_tsi-old_tsi:.6f})")
-            if drift_detected:
+        # 二重記録防止: 同じobservation_dateは記録しない
+        if gnss_observation_date in existing["observation_date"].astype(str).values:
+            print(f"  observation_date={gnss_observation_date} は記録済み → スキップ")
+            return
+
+        # ドリフト検出: 同じdateで値が変わっていないか確認
+        latest_date_str = str(latest_tsi_date.date())
+        if latest_date_str in existing["date"].astype(str).values:
+            old_row = existing[existing["date"].astype(str) == latest_date_str].iloc[-1]
+            old_tsi = old_row["TSI"]
+            new_tsi = tsi_df.loc[latest_tsi_date, "TSI"]
+            if abs(old_tsi - new_tsi) > 1e-6:
+                print(f"  [警告] {latest_date_str} のTSI値がドリフト: "
+                      f"記録済み={old_tsi:.6f} → 再計算={new_tsi:.6f}")
                 print("  [重要] GNSSデータの再解析が検出されました。")
                 print("  既存の記録値は変更しません（前向き検証の原則）。")
+            print(f"  date={latest_date_str} は記録済み → スキップ")
+            return
+
+    # === 新しい1行を作成 ===
+    latest = tsi_df.loc[latest_tsi_date]
+    new_row = pd.DataFrame([{
+        "date":             str(latest_tsi_date.date()),
+        "observation_date": gnss_observation_date,
+        "publish_date":     datetime.now().strftime("%Y-%m-%d"),
+        "TSI":              round(latest["TSI"], 6),
+        "TSI_30d":          round(latest["TSI_30d"], 6) if pd.notna(latest["TSI_30d"]) else "",
+        "alert":            int(latest["alert"]) if pd.notna(latest["alert"]) else 0,
+        "vc_horiz_mean":    round(latest["vc_horiz_mean"], 6) if "vc_horiz_mean" in latest.index else "",
+        "coherence_vc":     round(latest["coherence_vc"], 6) if "coherence_vc" in latest.index else "",
+        "accel_mean":       round(latest["accel_mean"], 6) if "accel_mean" in latest.index else "",
+        "lf_mean":          round(latest["lf_mean"], 6) if "lf_mean" in latest.index else "",
+    }])
+
+    # === 追記（append only） ===
+    if LOG_FILE.exists() and LOG_FILE.stat().st_size > 0:
+        # header=False: ヘッダー行を追加しない（これ忘れるとCSVが壊れる）
+        new_row.to_csv(LOG_FILE, mode="a", header=False, index=False)
     else:
-        existing = pd.DataFrame()
-        existing_dates = set()
+        # 初回: ヘッダー付きで新規作成
+        new_row.to_csv(LOG_FILE, mode="w", header=True, index=False)
 
-    # 新規日のみ追記（既存の日付は絶対に上書きしない）
-    log_cols = ["TSI", "TSI_30d", "alert", "vc_horiz_mean", "coherence_vc", "accel_mean", "lf_mean"]
-    publish_now = datetime.now().isoformat()
-    new_entries = []
-
-    for date, row in new_data.iterrows():
-        if date not in existing_dates:
-            entry = {"date": date}
-            for col in log_cols:
-                entry[col] = row[col] if col in row.index else np.nan
-            # === 監査列（科学的証拠の核心） ===
-            entry["observation_date"] = gnss_observation_date  # GNSSデータの最終観測日
-            entry["publish_date"] = publish_now                # スクリプト実行日時
-            new_entries.append(entry)
-
-    if new_entries:
-        new_df = pd.DataFrame(new_entries)
-        if len(existing) > 0:
-            combined = pd.concat([existing.reset_index(), new_df], ignore_index=True)
-        else:
-            combined = new_df
-        combined.to_csv(LOG_FILE, index=False)
-        print(f"  {len(new_entries)}日分のデータを追記")
-        print(f"  observation_date: {gnss_observation_date}")
-        print(f"  publish_date: {publish_now}")
-    else:
-        print("  追記すべき新規データなし")
+    print(f"  ✓ 1行追記完了")
+    print(f"    date:             {str(latest_tsi_date.date())}")
+    print(f"    observation_date: {gnss_observation_date}")
+    print(f"    publish_date:     {datetime.now().strftime('%Y-%m-%d')}")
+    print(f"    TSI:              {latest['TSI']:.6f}")
+    print(f"    TSI_30d:          {latest['TSI_30d']:.6f}" if pd.notna(latest['TSI_30d']) else "    TSI_30d:          N/A")
+    print(f"    alert:            {int(latest['alert'])}")
 
 
 def main():
