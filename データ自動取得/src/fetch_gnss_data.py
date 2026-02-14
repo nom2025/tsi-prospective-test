@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 import time
 import sys
+import os
 import ftplib
 
 # 設定
@@ -195,11 +196,19 @@ def fetch_gnss_data_for_year(station_id, station_info, year, debug_mode=False):
     filename = f"{station_id}.{year_last2}.pos"
     
     # FTP経由でデータを取得（試行）
+    # CI環境ではFTPポートがブロック/遅延されるためHTTP直行
     file_content = None
     ftp_success = False
-    
+    skip_ftp = (os.environ.get('CI') == 'true')
+
+    if skip_ftp:
+        print("(FTPスキップ→HTTP)", end=" ", flush=True)
+
+    ftp = None
     try:
-        ftp = ftplib.FTP(GEONET_FTP_HOST)
+        if skip_ftp:
+            raise Exception("CI環境のためFTPスキップ")
+        ftp = ftplib.FTP(GEONET_FTP_HOST, timeout=30)
         # 匿名ログイン（ユーザー名: anonymous, パスワード: 空またはメールアドレス）
         try:
             ftp.login('anonymous', '')
@@ -252,7 +261,7 @@ def fetch_gnss_data_for_year(station_id, station_info, year, debug_mode=False):
             except:
                 pass
                 
-    except ftplib.all_errors as e:
+    except Exception as e:
         if debug_mode:
             print(f"\n    FTPエラー: {e}")
         ftp_success = False
