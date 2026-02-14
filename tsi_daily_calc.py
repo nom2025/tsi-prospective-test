@@ -201,10 +201,29 @@ def calculate_tsi_from_gnss(gnss_file):
     return result
 
 
-def update_prospective_log(tsi_df):
+def get_gnss_observation_date(gnss_file):
+    """GNSSデータファイルから最終観測日を取得する"""
+    try:
+        df = pd.read_csv(gnss_file, parse_dates=["date"])
+        return df["date"].max().date().isoformat()
+    except Exception:
+        return "unknown"
+
+
+def update_prospective_log(tsi_df, gnss_observation_date):
     """
     前向き検証ログに新しいデータを追記する。
-    既存データは上書きしない（追記のみ）。
+
+    ===== 絶対ルール =====
+    1. 既存データは上書きしない（追記のみ）
+    2. 過去の行を修正・削除しない
+    3. GNSSデータが後日再解析されても、過去のTSI値を再計算しない
+    =======================
+
+    各行に以下の監査列を必ず記録する:
+    - observation_date: GNSSデータの最終観測日（計算に使ったデータの鮮度）
+    - publish_date: このスクリプトが実行された日時（GitHub Actionsの実行日）
+    これにより第三者が「未来情報を使っていない」ことを確認できる。
     """
     freeze_date = pd.Timestamp(FROZEN_PARAMS["freeze_date"])
 
@@ -215,16 +234,33 @@ def update_prospective_log(tsi_df):
         print("  凍結日以降のデータなし")
         return
 
-    # 既存ログ読み込み
+    # 既存ログ読み込み（追記モード）
     if LOG_FILE.exists():
         existing = pd.read_csv(LOG_FILE, parse_dates=["date"], index_col="date")
         existing_dates = set(existing.index)
+
+        # === 整合性チェック ===
+        # 再計算で過去の値が変わっていないか検証（GNSSデータ再解析による汚染検出）
+        overlap_dates = set(new_data.index) & existing_dates
+        if overlap_dates:
+            drift_detected = False
+            for d in sorted(overlap_dates):
+                old_tsi = existing.loc[d, "TSI"] if "TSI" in existing.columns else np.nan
+                new_tsi = new_data.loc[d, "TSI"]
+                if pd.notna(old_tsi) and pd.notna(new_tsi) and abs(old_tsi - new_tsi) > 1e-6:
+                    drift_detected = True
+                    print(f"  [警告] {d.date()} のTSI値がドリフト: "
+                          f"記録済み={old_tsi:.6f} → 再計算={new_tsi:.6f} (差={new_tsi-old_tsi:.6f})")
+            if drift_detected:
+                print("  [重要] GNSSデータの再解析が検出されました。")
+                print("  既存の記録値は変更しません（前向き検証の原則）。")
     else:
         existing = pd.DataFrame()
         existing_dates = set()
 
-    # 新規日のみ追記
+    # 新規日のみ追記（既存の日付は絶対に上書きしない）
     log_cols = ["TSI", "TSI_30d", "alert", "vc_horiz_mean", "coherence_vc", "accel_mean", "lf_mean"]
+    publish_now = datetime.now().isoformat()
     new_entries = []
 
     for date, row in new_data.iterrows():
@@ -232,7 +268,9 @@ def update_prospective_log(tsi_df):
             entry = {"date": date}
             for col in log_cols:
                 entry[col] = row[col] if col in row.index else np.nan
-            entry["recorded_at"] = datetime.now().isoformat()
+            # === 監査列（科学的証拠の核心） ===
+            entry["observation_date"] = gnss_observation_date  # GNSSデータの最終観測日
+            entry["publish_date"] = publish_now                # スクリプト実行日時
             new_entries.append(entry)
 
     if new_entries:
@@ -243,6 +281,8 @@ def update_prospective_log(tsi_df):
             combined = new_df
         combined.to_csv(LOG_FILE, index=False)
         print(f"  {len(new_entries)}日分のデータを追記")
+        print(f"  observation_date: {gnss_observation_date}")
+        print(f"  publish_date: {publish_now}")
     else:
         print("  追記すべき新規データなし")
 
@@ -258,6 +298,10 @@ def main():
     if not gnss_file.exists():
         print(f"  [エラー] GNSSデータファイルが見つかりません: {gnss_file}")
         return
+
+    # GNSSデータの最終観測日を記録（監査用）
+    gnss_obs_date = get_gnss_observation_date(gnss_file)
+    print(f"  GNSSデータ最終観測日: {gnss_obs_date}")
 
     print("\n■ TSI計算中...")
     tsi_df = calculate_tsi_from_gnss(gnss_file)
@@ -277,14 +321,17 @@ def main():
     print(f"  TSI_30d  = {latest['TSI_30d']:.4f}" if not np.isnan(latest['TSI_30d']) else "  TSI_30d  = N/A (データ不足)")
     print(f"  警報状態 = {'★ 警報中' if latest['alert'] else '通常'}")
 
-    # 全データ保存
+    # tsi_frozen.csv の保存（凍結日以前のデータのみ上書き許可）
+    # 凍結日以前 = 過去のバックテスト用参考データ（検証対象外）
+    # 凍結日以降 = prospective_log.csv にのみ記録（こちらが正式記録）
     output_file = OUTPUT_DIR / "tsi_frozen.csv"
     tsi_df.to_csv(output_file)
-    print(f"\n■ 全データ保存: {output_file}")
+    print(f"\n■ 参考用全データ保存: {output_file}")
+    print(f"  注意: 検証の正式記録は prospective_log.csv のみ")
 
-    # 前向き検証ログ更新
+    # 前向き検証ログ更新（追記のみ・上書き禁止）
     print("\n■ 前向き検証ログ更新中...")
-    update_prospective_log(tsi_df)
+    update_prospective_log(tsi_df, gnss_obs_date)
 
     # 直近30日のTSI状況
     recent = tsi_df.tail(30)
