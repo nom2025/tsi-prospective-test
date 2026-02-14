@@ -141,12 +141,15 @@ def main():
     # ================================================================
     logger.info("\n■ Phase 1: データ取得")
 
+    #                       名前        スクリプト                              リトライ 待機  タイムアウト
     fetch_steps = [
-        ("Japan EQ", fetch_dir / "fetch_earthquake_data.py", 1, 10, 300),
-        ("World EQ", fetch_dir / "fetch_world_earthquake_data.py", 2, 15, 180),
-        ("Deep EQ",  fetch_dir / "fetch_depth_data.py", 1, 10, 300),
-        ("GNSS",     fetch_dir / "fetch_gnss_data.py", 2, 30, 600),
+        ("Japan EQ", fetch_dir / "fetch_earthquake_data.py",       1,     10,  300),
+        ("World EQ", fetch_dir / "fetch_world_earthquake_data.py", 1,     10,  180),
+        ("Deep EQ",  fetch_dir / "fetch_depth_data.py",            1,     10,  300),
+        ("GNSS",     fetch_dir / "fetch_gnss_data.py",             1,     10,  300),
     ]
+    # 注: GNSS取得はCI環境で遅くなりがち（国土地理院サイトのスクレイピング）
+    # タイムアウト300秒×リトライ1回 = 最大310秒に抑制
 
     for name, script, retries, delay, timeout in fetch_steps:
         results[name] = run_step(logger, name, script, retries, delay, timeout)
