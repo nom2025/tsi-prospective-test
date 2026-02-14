@@ -46,6 +46,12 @@ desktop.ini
 # CI work folders (fetcher backups by date)
 データ自動取得/src/20*/
 
+# Fetcher intermediate data
+データ自動取得/data/
+
+# Reproducible xlsx outputs
+データ分析結果出力/total_グラフ.xlsx
+
 # CI pipeline log (uploaded as artifact instead)
 pipeline_log.txt
 
