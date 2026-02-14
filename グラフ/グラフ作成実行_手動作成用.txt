@@ -1,0 +1,41 @@
+以下の内容をメモ帳にコピー&ペーストして、グラフ作成実行.batとして保存してください。
+
+保存時の注意:
+1. メモ帳で「名前を付けて保存」を選択
+2. ファイル名: グラフ作成実行.bat
+3. ファイルの種類: すべてのファイル (*.*)
+4. エンコーディング: ANSI または Shift-JIS を選択
+5. 保存
+
+========================================
+
+@echo off
+chcp 65001 >nul
+cd /d "%~dp0"
+
+echo ========================================
+echo Graph Creation Script
+echo ========================================
+echo.
+
+cd ..
+
+echo Creating graphs...
+python ソース\create_graphs.py
+if errorlevel 1 (
+    echo.
+    echo ERROR: Failed to create graphs
+    pause
+    exit /b 1
+)
+echo.
+
+echo ========================================
+echo Graph creation completed!
+echo ========================================
+echo.
+pause
+
+========================================
+
+

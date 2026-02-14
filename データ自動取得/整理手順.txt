@@ -1,0 +1,30 @@
+データ自動取得フォルダの整理手順
+=====================================
+
+以下の手順でファイルを整理してください：
+
+1. 整理スクリプトを実行
+   - organize_files.py を実行するか
+   - 整理実行.bat をダブルクリック
+
+2. 実行後、以下の構成になります：
+   データ自動取得/
+   ├── src/                    # ソースファイル
+   │   ├── fetch_earthquake_data.py
+   │   ├── fetch_world_earthquake_data.py
+   │   └── fetch_depth_data.py
+   ├── data/                   # データファイル
+   │   ├── 2010-all.csv
+   │   ├── world-all.csv
+   │   └── depth.csv
+   ├── debug/                  # デバッグファイル
+   │   └── debug_html_*.html
+   └── YYYYMMDD/              # 作業フォルダ（そのまま）
+
+3. 各スクリプトのパス設定は自動的に更新されます
+
+4. プロジェクトルートのラッパースクリプトも更新済みです
+
+注意: 整理後も、プロジェクトルートから実行する場合は
+「python fetch_earthquake_data.py」のままで動作します。
+

@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+.conda/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+.cursorrules
+*.swp
+*.swo
+*~
+
+# Claude Code session data
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment
+.env
+.env.local
+
+# Logs & temp
+*.log
+*.tmp
+*.temp
+
+# Database
+*.db
+*.sqlite
+
+# CI work folders (fetcher backups by date)
+データ自動取得/src/20*/
+
+# CI pipeline log (uploaded as artifact instead)
+pipeline_log.txt
+
+# Generated graphs (reproducible from scripts)
+グラフ/*.png
+グラフ/*.xlsx
+
+# Reproducible analysis outputs (can regenerate from scripts)
+データ分析結果出力/特徴探索結果/
+データ分析結果出力/earthquake_correlation_analysis.csv
+データ分析結果出力/japan_scores.csv
+データ分析結果出力/world_scores.csv
+データ分析結果出力/depth_scores.csv
+データ分析結果出力/gnss_scores.csv
+データ分析結果出力/b_value_scores.csv
+データ分析結果出力/total.csv
+データ分析結果出力/total_no_gnss.csv
+データ分析結果出力/total_with_gnss.csv
+データ分析結果出力/pressure_scores.csv
+
+# GitHub Pages build output
+_site/
+
+# ===================================================
+# TRACKED FILES (critical for prospective test):
+# ===================================================
+# 生データ/*.csv                              → TRACKED
+# prospective_log.csv                         → TRACKED (append-only)
+# データ分析結果出力/tsi_frozen.csv             → TRACKED
+# データ分析結果出力/tectonic_stress_index.csv  → TRACKED
+# データ分析結果出力/verification_*.csv         → TRACKED
+# TSI_FROZEN_SPEC.md                          → TRACKED

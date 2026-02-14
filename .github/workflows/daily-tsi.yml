@@ -1,0 +1,104 @@
+name: Daily TSI Prospective Test
+
+on:
+  schedule:
+    # 毎日 00:00 UTC = 09:00 JST
+    # GEONETデータは日本時間の営業時間中に更新されるため
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 手動実行も可能
+
+# 同時実行防止（前の実行が終わるまで待つ）
+concurrency:
+  group: daily-tsi-update
+  cancel-in-progress: false
+
+permissions:
+  contents: write # データファイルのpushに必要
+
+env:
+  PYTHONIOENCODING: utf-8
+  TZ: Asia/Tokyo
+
+jobs:
+  daily-tsi-update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pandas numpy scipy requests beautifulsoup4 lxml python-dateutil matplotlib
+
+      - name: Install Chrome (for Selenium/F-net scraping)
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Install Selenium
+        run: pip install selenium
+
+      - name: Run daily pipeline
+        run: python scripts/ci_daily_pipeline.py
+        env:
+          CI: "true"
+
+      - name: Commit and push data changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # データファイルのみ追加（コードは絶対に変更しない）
+          git add "生データ/2010-all.csv" || true
+          git add "生データ/world-all.csv" || true
+          git add "生データ/depth.csv" || true
+          git add "生データ/gnss_data.csv" || true
+          git add "prospective_log.csv" || true
+          git add "データ分析結果出力/tsi_frozen.csv" || true
+          git add "データ分析結果出力/tectonic_stress_index.csv" || true
+
+          if git diff --staged --quiet; then
+            echo "No data changes to commit"
+          else
+            DATESTAMP=$(TZ=Asia/Tokyo date '+%Y-%m-%d')
+            git commit -m "$(cat <<EOF
+          Daily TSI update: ${DATESTAMP}
+
+          Automated data fetch and TSI calculation.
+          See prospective_log.csv for TSI values.
+          EOF
+          )"
+            git push
+          fi
+
+      - name: Generate dashboard
+        if: always()
+        run: python scripts/generate_dashboard.py || echo "Dashboard generation failed (non-critical)"
+
+      - name: Deploy to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          keep_files: false
+        continue-on-error: true
+
+      - name: Upload run log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-log-${{ github.run_id }}
+          path: pipeline_log.txt
+          retention-days: 90

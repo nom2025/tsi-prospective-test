@@ -1,0 +1,8 @@
+# データ分析結果出力フォルダ
+# スコア計算結果のCSVファイルをここに出力します
+# 出力ファイル:
+#   - japan_scores.csv
+#   - world_scores.csv
+#   - depth_scores.csv
+#   - total.csv
+
