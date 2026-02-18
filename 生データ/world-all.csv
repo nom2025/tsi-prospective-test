@@ -1800,7 +1800,6 @@
 2012/12/10,Banda Sea,7.1
 2012/12/07,New Zealand,6.3
 2012/12/07,Japan,6.2
-2012/12/07,Japan,7.2
 2012/12/07,Japan,7.3
 2012/12/02,Vanuatu,6.1
 2012/11/19,Papua New Guinea,6.0
@@ -1830,8 +1829,8 @@
 2012/09/25,Mexico,6.3
 2012/09/14,Indonesia,6.2
 2012/09/08,Indonesia,6.1
-2012/09/05,Costa Rica,7.6
 2012/09/05,Vanuatu,6.0
+2012/09/05,Costa Rica,7.6
 2012/09/03,Indonesia,6.1
 2012/08/31,Philippines,7.6
 2012/08/30,Svalbard and Jan Mayen,6.8
@@ -1841,15 +1840,15 @@
 2012/08/18,Indonesia,6.3
 2012/08/14,Russia,7.7
 2012/08/12,China,6.2
-2012/08/11,Iran,6.2
 2012/08/11,Iran,6.4
+2012/08/11,Iran,6.2
 2012/08/10,United States,6.2
 2012/08/02,Papua New Guinea,6.1
 2012/08/02,Peru,6.1
 2012/07/28,Papua New Guinea,6.5
 2012/07/26,Mauritius - Reunion region,6.7
-2012/07/25,Solomon Islands,6.4
 2012/07/25,Indonesia,6.4
+2012/07/25,Solomon Islands,6.4
 2012/07/20,Russia,6.0
 2012/07/08,Russia,6.0
 2012/07/06,Vanuatu,6.3
@@ -1882,8 +1881,8 @@
 2012/04/17,Papua New Guinea,6.8
 2012/04/17,Chile,6.7
 2012/04/15,off the west coast of northern Sumatra,6.2
-2012/04/14,Drake Passage,6.2
 2012/04/14,Vanuatu,6.2
+2012/04/14,Drake Passage,6.2
 2012/04/12,Mexico,7.0
 2012/04/12,Mexico,6.0
 2012/04/11,Mexico,6.5
@@ -1909,8 +1908,8 @@
 2012/02/26,Russia,6.7
 2012/02/26,south of the Fiji Islands,6.0
 2012/02/14,Solomon Islands,6.4
-2012/02/06,Philippines,6.7
 2012/02/06,Philippines,6.0
+2012/02/06,Philippines,6.7
 2012/02/05,Vanuatu,6.1
 2012/02/05,Vanuatu,6.1
 2012/02/03,Vanuatu,6.1
@@ -1930,8 +1929,8 @@
 2011/12/15,south of the Kermadec Islands,6.0
 2011/12/14,Papua New Guinea,7.1
 2011/12/13,Indonesia,6.0
-2011/12/11,South Sandwich Islands region,6.2
 2011/12/11,Mexico,6.5
+2011/12/11,South Sandwich Islands region,6.2
 2011/12/07,Chile,6.1
 2011/11/30,Philippines,6.0
 2011/11/28,Papua New Guinea,6.1
@@ -1963,10 +1962,10 @@
 2011/09/15,east of the North Island of New Zealand,6.1
 2011/09/14,United States,6.0
 2011/09/09,Canada,6.4
-2011/09/05,Tonga,6.2
 2011/09/05,Indonesia,6.7
-2011/09/03,Vanuatu,7.0
+2011/09/05,Tonga,6.2
 2011/09/03,South Sandwich Islands region,6.4
+2011/09/03,Vanuatu,7.0
 2011/09/02,Argentina,6.7
 2011/09/02,United States,6.9
 2011/09/01,Vanuatu,6.0
@@ -1974,17 +1973,17 @@
 2011/08/24,Vanuatu,6.2
 2011/08/24,Peru,7.0
 2011/08/22,Indonesia,6.1
-2011/08/20,Vanuatu,7.1
-2011/08/20,Vanuatu,6.5
 2011/08/20,Vanuatu,7.2
+2011/08/20,Vanuatu,6.5
+2011/08/20,Vanuatu,7.1
 2011/08/19,Japan,6.2
 2011/08/19,Wallis and Futuna,6.2
 2011/08/17,Japan,6.1
 2011/08/16,Indonesia,6.1
 2011/08/10,Saint Helena,6.0
 2011/08/04,Russia,6.1
-2011/07/31,Papua New Guinea,6.6
 2011/07/31,Vanuatu region,6.1
+2011/07/31,Papua New Guinea,6.6
 2011/07/30,Japan,6.3
 2011/07/29,south of the Fiji Islands,6.7
 2011/07/26,Mexico,6.0
@@ -2068,12 +2067,12 @@
 2011/03/11,Japan,6.2
 2011/03/11,Japan,6.4
 2011/03/11,Japan,6.3
-2011/03/11,Japan,6.3
+2011/03/11,Japan,6.2
 2011/03/11,Japan,6.4
 2011/03/11,Japan,6.3
 2011/03/11,Japan,9.1
 2011/03/11,Japan,6.1
-2011/03/11,Japan,6.2
+2011/03/11,Japan,6.3
 2011/03/11,Japan,6.3
 2011/03/11,Japan,6.0
 2011/03/11,Japan,6.3
@@ -2152,8 +2151,8 @@
 2010/11/03,Tonga,6.1
 2010/11/03,Indonesia,6.0
 2010/10/30,Pacific-Antarctic Ridge,6.4
-2010/10/25,Indonesia,6.3
 2010/10/25,Indonesia,7.8
+2010/10/25,Indonesia,6.3
 2010/10/21,Mexico,6.7
 2010/10/08,Indonesia,6.2
 2010/10/08,United States,6.0
@@ -2180,10 +2179,10 @@
 2010/08/13,Mariana Islands region,6.9
 2010/08/12,Ecuador,7.1
 2010/08/10,Vanuatu,7.3
-2010/08/04,Papua New Guinea,7.0
-2010/08/04,United States,6.4
 2010/08/04,Papua New Guinea,6.5
 2010/08/04,south of the Fiji Islands,6.0
+2010/08/04,Papua New Guinea,7.0
+2010/08/04,United States,6.4
 2010/08/04,east of the Kuril Islands,6.0
 2010/08/03,Indonesia,6.3
 2010/07/30,Russia,6.3
@@ -2195,10 +2194,10 @@
 2010/07/22,Vanuatu,6.1
 2010/07/21,Indonesia,6.1
 2010/07/20,Papua New Guinea,6.3
+2010/07/18,United States,6.0
+2010/07/18,Papua New Guinea,7.3
 2010/07/18,Papua New Guinea,6.9
 2010/07/18,United States,6.7
-2010/07/18,Papua New Guinea,7.3
-2010/07/18,United States,6.0
 2010/07/14,Chile,6.6
 2010/07/12,Chile,6.3
 2010/07/10,United States,6.3
@@ -2216,16 +2215,16 @@
 2010/06/12,India region,7.5
 2010/06/09,Vanuatu,6.0
 2010/06/01,Costa Rica,6.0
-2010/05/31,India,6.5
 2010/05/31,Philippines,6.0
-2010/05/27,Vanuatu,6.1
+2010/05/31,India,6.5
 2010/05/27,Vanuatu,7.2
+2010/05/27,Vanuatu,6.1
 2010/05/26,Japan,6.5
 2010/05/25,northern Mid-Atlantic Ridge,6.3
 2010/05/24,Brazil,6.5
 2010/05/23,Peru,6.1
-2010/05/19,Peru,6.0
 2010/05/19,Pacific-Antarctic Ridge,6.0
+2010/05/19,Peru,6.0
 2010/05/19,Pacific-Antarctic Ridge,6.0
 2010/05/09,Indonesia,7.2
 2010/05/06,Peru,6.2
@@ -2261,16 +2260,16 @@
 2010/03/11,Chile,6.0
 2010/03/11,Chile,7.0
 2010/03/11,Chile,6.9
-2010/03/08,United States,6.1
 2010/03/08,Turkey,6.1
+2010/03/08,United States,6.1
 2010/03/07,southern East Pacific Rise,6.3
 2010/03/05,Indonesia,6.8
 2010/03/05,Chile,6.6
 2010/03/05,Chile,6.1
+2010/03/04,Chile,6.3
+2010/03/04,Vanuatu,6.5
 2010/03/04,Chile,6.0
 2010/03/04,Taiwan,6.3
-2010/03/04,Vanuatu,6.5
-2010/03/04,Chile,6.3
 2010/03/03,Chile,6.1
 2010/02/28,Chile,6.2
 2010/02/27,Chile,7.4
@@ -2279,12 +2278,12 @@
 2010/02/27,Chile,6.2
 2010/02/27,Chile,6.0
 2010/02/27,Chile,6.0
+2010/02/27,Chile,6.0
 2010/02/27,Chile,6.1
 2010/02/27,Chile,6.0
 2010/02/27,Argentina,6.3
 2010/02/27,Chile,6.1
 2010/02/27,Chile,6.2
-2010/02/27,Chile,6.0
 2010/02/26,Japan,7.0
 2010/02/22,Tonga,6.0
 2010/02/18,Russia,6.9
@@ -2296,8 +2295,8 @@
 2010/02/05,southeast Indian Ridge,6.2
 2010/02/01,Papua New Guinea,6.2
 2010/01/17,Drake Passage,6.3
-2010/01/12,Haiti,7.0
 2010/01/12,Haiti,6.0
+2010/01/12,Haiti,7.0
 2010/01/10,California Earthquake,6.5
 2010/01/09,Solomon Islands,6.2
 2010/01/05,Solomon Islands,6.0
