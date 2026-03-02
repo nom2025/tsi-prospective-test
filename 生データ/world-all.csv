@@ -1,4 +1,5 @@
 ﻿date,place_w,magnitude_w
+2026/03/01,Fiji region,6.3
 2026/02/23,United States,6.1
 2026/02/22,Malaysia,7.1
 2026/02/22,south of the Fiji Islands,6.0
@@ -24,9 +25,9 @@
 2025/12/24,Taiwan Earthquake,6.0
 2025/12/22,Papua New Guinea,6.5
 2025/12/12,Japan,6.7
-2025/12/08,Japan,6.6
-2025/12/08,Japan,6.0
 2025/12/08,Japan Earthquake,7.6
+2025/12/08,Japan,6.0
+2025/12/08,Japan,6.6
 2025/12/06,2025 Hubbard Glacier Earthquake,7.0
 2025/11/27,United States,6.0
 2025/11/27,Indonesia,6.4
@@ -84,8 +85,8 @@
 2025/07/30,Russia,6.2
 2025/07/30,Russia,6.9
 2025/07/29,Russia,6.3
-2025/07/29,Russia Earthquake,8.8
 2025/07/29,south of the Fiji Islands,6.6
+2025/07/29,Russia Earthquake,8.8
 2025/07/29,Russia,6.1
 2025/07/29,Russia,6.0
 2025/07/29,Russia,6.0
@@ -115,10 +116,10 @@
 2025/06/08,Colombia,6.3
 2025/06/07,western Indian-Antarctic Ridge,6.2
 2025/06/06,Chile,6.4
-2025/05/31,Kermadec Islands region,6.1
-2025/05/31,Japan,6.0
 2025/05/31,Kermadec Islands region,6.2
 2025/05/31,Kermadec Islands region,6.0
+2025/05/31,Kermadec Islands region,6.1
+2025/05/31,Japan,6.0
 2025/05/30,southwest of Africa,6.2
 2025/05/25,Tonga,6.0
 2025/05/23,west of Macquarie Island,6.1
