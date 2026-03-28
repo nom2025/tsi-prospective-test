@@ -595,18 +595,29 @@ def fetch_depth_data(debug_mode=False, use_selenium=False, existing_df=None):
 
 
 def load_existing_data():
-    """既存のCSVファイルを読み込む"""
-    if not CSV_FILE.exists():
-        print(f"既存のファイルが見つかりません: {CSV_FILE}")
+    """既存のCSVファイルを読み込む
+
+    データ自動取得/data/ と 生データ/ の両方から読み込み、
+    マージして最も完全なデータセットを返す。
+    """
+    frames = []
+    for path in [CSV_FILE, RAW_DATA_FILE]:
+        if path.exists():
+            try:
+                df = pd.read_csv(path)
+                print(f"既存データ読み込み: {len(df)} 件 ({path.name} from {path.parent.name}/)")
+                frames.append(df)
+            except Exception as e:
+                print(f"読み込みエラー ({path}): {e}")
+
+    if not frames:
+        print("既存のファイルが見つかりません")
         return pd.DataFrame(columns=['date', 'depth'])
-    
-    try:
-        df = pd.read_csv(CSV_FILE)
-        print(f"既存データ: {len(df)} 件")
-        return df
-    except Exception as e:
-        print(f"既存データの読み込みエラー: {e}")
-        return pd.DataFrame(columns=['date', 'depth'])
+
+    merged = pd.concat(frames, ignore_index=True)
+    merged = merged.drop_duplicates(subset=['date', 'depth'], keep='first')
+    print(f"既存データ合計（重複除去後）: {len(merged)} 件")
+    return merged
 
 
 def find_new_data(existing_df, new_data):

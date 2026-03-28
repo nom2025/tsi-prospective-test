@@ -193,20 +193,30 @@ def normalize_date_in_dataframe(df):
 
 
 def load_existing_data():
-    """既存のCSVファイルを読み込む（日付形式を統一）"""
-    if not CSV_FILE.exists():
-        print(f"既存のファイルが見つかりません: {CSV_FILE}")
+    """既存のCSVファイルを読み込む（日付形式を統一）
+
+    データ自動取得/data/ と 生データ/ の両方から読み込み、
+    マージして最も完全なデータセットを返す。
+    """
+    frames = []
+    for path in [CSV_FILE, RAW_DATA_FILE]:
+        if path.exists():
+            try:
+                df = pd.read_csv(path)
+                print(f"既存データ読み込み: {len(df)} 件 ({path.name} from {path.parent.name}/)")
+                frames.append(df)
+            except Exception as e:
+                print(f"読み込みエラー ({path}): {e}")
+
+    if not frames:
+        print("既存のファイルが見つかりません")
         return pd.DataFrame(columns=['date', 'place', 'magnitude'])
-    
-    try:
-        df = pd.read_csv(CSV_FILE)
-        print(f"既存データ: {len(df)} 件")
-        # 日付形式を統一
-        df = normalize_date_in_dataframe(df)
-        return df
-    except Exception as e:
-        print(f"既存データの読み込みエラー: {e}")
-        return pd.DataFrame(columns=['date', 'place', 'magnitude'])
+
+    merged = pd.concat(frames, ignore_index=True)
+    merged = normalize_date_in_dataframe(merged)
+    merged = merged.drop_duplicates(subset=['date', 'place', 'magnitude'], keep='first')
+    print(f"既存データ合計（重複除去後）: {len(merged)} 件")
+    return merged
 
 
 def find_new_data(existing_df, new_data):
