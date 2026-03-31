@@ -1,15 +1,16 @@
 ﻿date,place_w,magnitude_w
+2026/03/30,Vanuatu,7.3
 2026/03/26,Japan,6.5
 2026/03/24,Tonga,7.5
 2026/03/22,Tonga,6.3
-2026/03/22,Tonga,6.2
 2026/03/22,Samoa,6.2
+2026/03/22,Tonga,6.2
 2026/03/21,northern Mid-Atlantic Ridge,6.6
 2026/03/20,Vanuatu,6.1
 2026/03/20,South Shetland Islands,6.6
 2026/03/13,Chile,6.3
 2026/03/09,Italy,6.0
-2026/03/06,Solomon Islands,6.3
+2026/03/06,Solomon Islands,6.2
 2026/03/04,United States,6.4
 2026/03/03,Indonesia,6.2
 2026/03/02,Japan region,6.0
@@ -45,25 +46,25 @@
 2025/11/27,United States,6.0
 2025/11/27,Indonesia,6.4
 2025/11/10,Japan,6.0
-2025/11/09,Japan,6.8
 2025/11/09,Japan,6.4
+2025/11/09,Japan,6.8
 2025/11/04,Russia,6.0
 2025/11/04,United States,6.0
 2025/11/03,Russia,6.1
 2025/11/02,Afghanistan,6.2
 2025/10/28,Banda Sea,6.4
-2025/10/27,Turkey,6.0
 2025/10/27,Guadeloupe,6.5
+2025/10/27,Turkey,6.0
 2025/10/26,Timor Leste,6.2
 2025/10/25,Solomon Islands,6.0
 2025/10/16,Philippines,6.0
 2025/10/16,Indonesia,6.4
 2025/10/16,Drake Passage,6.3
 2025/10/11,Philippines,6.0
-2025/10/10,Drake Passage,7.6
-2025/10/10,Philippines,6.7
-2025/10/10,Papua New Guinea,6.3
 2025/10/10,Philippines,7.4
+2025/10/10,Papua New Guinea,6.3
+2025/10/10,Philippines,6.7
+2025/10/10,Drake Passage,7.6
 2025/10/09,Russia,6.1
 2025/10/07,Papua New Guinea,6.6
 2025/10/03,Russia,6.1
@@ -72,8 +73,8 @@
 2025/09/25,Venezuela,6.3
 2025/09/24,Venezuela,6.2
 2025/09/19,Russia,6.0
-2025/09/18,Indonesia,6.0
 2025/09/18,Russia,7.8
+2025/09/18,Indonesia,6.0
 2025/09/16,Papua New Guinea,6.0
 2025/09/15,Russia,6.0
 2025/09/13,Russia,7.4
@@ -97,12 +98,12 @@
 2025/07/30,Russia,6.1
 2025/07/30,Russia,6.2
 2025/07/30,Russia,6.9
-2025/07/29,Russia,6.0
-2025/07/29,Russia,6.0
-2025/07/29,Russia,6.1
 2025/07/29,Russia,6.3
-2025/07/29,Russia Earthquake,8.8
 2025/07/29,south of the Fiji Islands,6.6
+2025/07/29,Russia Earthquake,8.8
+2025/07/29,Russia,6.1
+2025/07/29,Russia,6.0
+2025/07/29,Russia,6.0
 2025/07/28,Macquarie Island region,7.0
 2025/07/28,Indonesia,6.4
 2025/07/26,Macquarie Island region,6.2
@@ -117,8 +118,8 @@
 2025/07/20,Russia Earthquake,7.4
 2025/07/20,Russia,6.6
 2025/07/16,Alaska Earthquake,7.3
-2025/07/14,Panama,6.2
 2025/07/14,Indonesia,6.7
+2025/07/14,Panama,6.2
 2025/07/07,New Zealand,6.2
 2025/06/28,Scotia Sea,6.6
 2025/06/27,Philippines,6.0
@@ -287,9 +288,9 @@
 2023/12/03,Philippines,6.0
 2023/12/03,Philippines,6.6
 2023/12/02,Philippines,7.6
-2023/12/02,Philippines,6.1
 2023/12/02,Philippines,6.4
 2023/12/02,Philippines,6.3
+2023/12/02,Philippines,6.1
 2023/12/02,Philippines,6.0
 2023/11/27,Papua New Guinea,6.5
 2023/11/24,United States,6.9
@@ -300,8 +301,8 @@
 2023/11/13,Papua New Guinea,6.1
 2023/11/10,Banda Sea,6.1
 2023/11/08,Banda Sea,6.7
-2023/11/08,Banda Sea,7.1
 2023/11/08,Banda Sea,6.7
+2023/11/08,Banda Sea,7.1
 2023/11/01,Indonesia,6.1
 2023/10/31,Chile,6.6
 2023/10/31,Fiji,6.5
@@ -312,10 +313,10 @@
 2023/10/11,west of Macquarie Island,6.3
 2023/10/11,Afghanistan,6.3
 2023/10/10,Argentina,6.0
-2023/10/07,Afghanistan,6.3
-2023/10/07,Afghanistan,6.3
-2023/10/07,Papua New Guinea,6.7
 2023/10/07,Papua New Guinea,6.9
+2023/10/07,Papua New Guinea,6.7
+2023/10/07,Afghanistan,6.3
+2023/10/07,Afghanistan,6.3
 2023/10/06,Japan region,6.1
 2023/10/05,Japan region,6.1
 2023/10/04,Philippines,6.4
@@ -350,8 +351,8 @@
 2023/07/02,Tonga,6.9
 2023/06/25,south of Tonga,6.2
 2023/06/19,Papua New Guinea,6.2
-2023/06/18,Gulf of California,6.4
 2023/06/18,south of Africa,6.0
+2023/06/18,Gulf of California,6.4
 2023/06/17,Tonga,6.1
 2023/06/16,Tonga,6.2
 2023/06/16,Tonga,6.0
@@ -406,18 +407,18 @@
 2023/02/17,Indonesia,6.1
 2023/02/15,Philippines,6.1
 2023/02/13,New Zealand,6.1
-2023/02/06,Turkey,6.0
-2023/02/06,Turkey,6.0
-2023/02/06,Kahramanmaras earthquake sequence,7.5
-2023/02/06,Turkey,6.7
 2023/02/06,Kahramanmaras earthquake sequence,7.8
+2023/02/06,Turkey,6.7
+2023/02/06,Kahramanmaras earthquake sequence,7.5
+2023/02/06,Turkey,6.0
+2023/02/06,Turkey,6.0
 2023/02/01,Philippines,6.0
 2023/01/26,New Zealand,6.0
 2023/01/24,Argentina,6.4
-2023/01/20,Guadeloupe,6.1
 2023/01/20,Argentina,6.8
-2023/01/18,Indonesia,7.0
+2023/01/20,Guadeloupe,6.1
 2023/01/18,Indonesia,6.0
+2023/01/18,Indonesia,7.0
 2023/01/16,Japan region,6.3
 2023/01/15,Indonesia,6.1
 2023/01/09,Indonesia,7.6
@@ -442,8 +443,8 @@
 2022/11/09,south of the Fiji Islands,7.0
 2022/11/09,south of the Fiji Islands,6.8
 2022/11/04,Mexico,6.1
-2022/11/02,North Pacific Ocean,6.0
 2022/11/02,South Sandwich Islands region,6.1
+2022/11/02,North Pacific Ocean,6.0
 2022/10/25,South Sandwich Islands region,6.3
 2022/10/25,Philippines,6.4
 2022/10/20,Panama,6.7
@@ -515,8 +516,8 @@
 2022/03/22,northern Mid-Atlantic Ridge,6.7
 2022/03/20,Kermadec Islands region,6.0
 2022/03/19,south of the Fiji Islands,6.3
-2022/03/16,Japan,7.3
 2022/03/16,Japan,6.0
+2022/03/16,Japan,7.3
 2022/03/13,Indonesia,6.7
 2022/03/13,Philippines,6.4
 2022/03/07,Fiji region,6.1
@@ -541,8 +542,8 @@
 2022/01/21,Japan,6.3
 2022/01/16,Papua New Guinea,6.1
 2022/01/14,Indonesia,6.6
-2022/01/11,United States,6.8
 2022/01/11,Cyprus,6.6
+2022/01/11,United States,6.8
 2022/01/11,United States,6.6
 2022/01/10,south of the Kermadec Islands,6.2
 2022/01/07,China,6.6
@@ -561,8 +562,8 @@
 2021/12/12,west of Macquarie Island,6.6
 2021/12/09,Japan,6.0
 2021/12/04,Indonesia,6.0
-2021/12/03,Chile,6.1
 2021/12/03,South Sandwich Islands region,6.0
+2021/12/03,Chile,6.1
 2021/11/30,Papua New Guinea,6.1
 2021/11/30,Papua New Guinea,6.3
 2021/11/29,Japan region,6.3
@@ -577,8 +578,8 @@
 2021/11/10,Japan,6.6
 2021/11/09,Nicaragua,6.3
 2021/11/06,Indonesia,6.0
-2021/11/01,Indonesia,6.0
 2021/11/01,South Sandwich Islands region,6.0
+2021/11/01,Indonesia,6.0
 2021/10/24,Taiwan,6.2
 2021/10/21,south of the Fiji Islands,6.1
 2021/10/18,Vanuatu,6.2
@@ -610,11 +611,11 @@
 2021/08/14,Haiti,7.2
 2021/08/14,United States,6.9
 2021/08/13,South Sandwich Islands region,6.1
-2021/08/12,South Sandwich Islands region,6.0
-2021/08/12,South Sandwich Islands region,6.1
 2021/08/12,South Sandwich Islands region,6.7
 2021/08/12,2021 South Sandwich Islands Earthquake,8.1
 2021/08/12,South Sandwich Islands region,7.5
+2021/08/12,South Sandwich Islands region,6.1
+2021/08/12,South Sandwich Islands region,6.0
 2021/08/11,Philippines,7.1
 2021/08/03,India region,6.1
 2021/08/02,Indonesia,6.0
@@ -633,17 +634,17 @@
 2021/06/20,New Zealand,6.5
 2021/06/03,Indonesia,6.2
 2021/05/31,United States,6.1
+2021/05/21,Wallis and Futuna,6.5
 2021/05/21,China,7.3
 2021/05/21,China,6.1
-2021/05/21,Wallis and Futuna,6.5
 2021/05/19,southern East Pacific Rise,6.7
 2021/05/14,Indonesia,6.7
 2021/05/13,Japan,6.0
 2021/05/13,Panama,6.1
-2021/05/12,Mauritius - Reunion region,6.7
 2021/05/12,El Salvador,6.0
-2021/05/07,west of Macquarie Island,6.1
+2021/05/12,Mauritius - Reunion region,6.7
 2021/05/07,Fiji region,6.1
+2021/05/07,west of Macquarie Island,6.1
 2021/05/01,Japan,6.9
 2021/04/29,Kermadec Islands region,6.1
 2021/04/28,India,6.0
@@ -651,9 +652,9 @@
 2021/04/25,Tonga,6.5
 2021/04/24,Tonga,6.5
 2021/04/19,Indonesia,6.1
-2021/04/10,Philippines,6.1
-2021/04/10,Indonesia,6.0
 2021/04/10,Papua New Guinea,6.0
+2021/04/10,Indonesia,6.0
+2021/04/10,Philippines,6.1
 2021/04/07,Kermadec Islands region,6.1
 2021/04/05,New Zealand,6.1
 2021/04/03,east of the South Sandwich Islands,6.6
@@ -669,15 +670,15 @@
 2021/03/06,Kermadec Islands region,6.2
 2021/03/06,Kermadec Islands region,6.1
 2021/03/06,New Zealand,6.3
-2021/03/05,Kermadec Islands region,6.3
 2021/03/05,Kermadec Islands region,6.0
+2021/03/05,Kermadec Islands region,6.3
 2021/03/05,Kermadec Islands region,6.2
-2021/03/04,Kermadec Islands region,6.5
 2021/03/04,Kermadec Islands region,6.1
 2021/03/04,New Zealand Earthquake,8.1
 2021/03/04,New Zealand,7.4
 2021/03/04,Vanuatu,6.1
 2021/03/04,New Zealand,7.3
+2021/03/04,Kermadec Islands region,6.5
 2021/03/03,Greece,6.3
 2021/02/18,Vanuatu,6.2
 2021/02/18,Wallis and Futuna,6.1
@@ -687,9 +688,9 @@
 2021/02/11,southeast of the Loyalty Islands,6.0
 2021/02/10,southeast of the Loyalty Islands,6.1
 2021/02/10,Indonesia,6.3
+2021/02/10,southeast of the Loyalty Islands,6.1
+2021/02/10,southeast of the Loyalty Islands,6.1
 2021/02/10,southeast of the Loyalty Islands,7.7
-2021/02/10,southeast of the Loyalty Islands,6.1
-2021/02/10,southeast of the Loyalty Islands,6.1
 2021/02/10,southeast of the Loyalty Islands,6.1
 2021/02/10,southeast of the Loyalty Islands,6.3
 2021/02/07,Papua New Guinea,6.3
@@ -716,8 +717,8 @@
 2020/12/14,Chile,6.0
 2020/12/10,Taiwan,6.1
 2020/12/06,Chile,6.1
-2020/12/01,United States,6.4
 2020/12/01,Balleny Islands region,6.0
+2020/12/01,United States,6.4
 2020/11/30,Argentina,6.3
 2020/11/30,Russia,6.4
 2020/11/22,Chile,6.1
@@ -742,18 +743,18 @@
 2020/09/06,central Mid-Atlantic Ridge,6.7
 2020/09/06,Vanuatu,6.2
 2020/09/06,Chile,6.3
-2020/09/01,Chile,6.3
 2020/09/01,Chile,6.8
 2020/09/01,Chile,6.5
+2020/09/01,Chile,6.3
 2020/08/31,Chagos Archipelago region,6.1
 2020/08/30,central Mid-Atlantic Ridge,6.5
 2020/08/25,Papua New Guinea,6.2
 2020/08/25,Papua New Guinea,6.0
 2020/08/24,Costa Rica,6.0
 2020/08/21,Indonesia,6.9
+2020/08/18,Indonesia,6.9
 2020/08/18,Indonesia,6.8
 2020/08/18,Philippines,6.6
-2020/08/18,Indonesia,6.9
 2020/08/12,Tanzania,6.0
 2020/08/06,Prince Edward Islands region,6.3
 2020/08/05,Vanuatu,6.4
@@ -761,15 +762,15 @@
 2020/08/01,Philippines,6.4
 2020/07/28,United States,6.1
 2020/07/26,South Sandwich Islands region,6.4
-2020/07/22,Alaska Earthquake,7.8
-2020/07/22,United States,6.1
 2020/07/22,western Xizang,6.3
+2020/07/22,United States,6.1
+2020/07/22,Alaska Earthquake,7.8
 2020/07/21,Fiji region,6.0
 2020/07/18,Tonga,6.1
 2020/07/17,India,6.1
 2020/07/17,Papua New Guinea,7.0
-2020/07/06,Java Sea,6.6
 2020/07/06,Micronesia,6.2
+2020/07/06,Java Sea,6.6
 2020/06/25,China,6.3
 2020/06/23,Mexico,7.4
 2020/06/23,Indonesia,6.0
@@ -779,8 +780,8 @@
 2020/06/13,Japan,6.6
 2020/06/10,southern Mid-Atlantic Ridge,6.0
 2020/06/04,Indonesia,6.4
-2020/06/03,Chile,6.8
 2020/06/03,south of the Fiji Islands,6.0
+2020/06/03,Chile,6.8
 2020/05/31,Peru,6.1
 2020/05/28,Tonga,6.0
 2020/05/27,Vanuatu,6.2
@@ -814,8 +815,8 @@
 2020/02/06,Philippines,6.0
 2020/02/05,Indonesia,6.2
 2020/01/29,Solomon Islands,6.0
-2020/01/28,Cayman Islands,6.1
 2020/01/28,Jamaica,7.7
+2020/01/28,Cayman Islands,6.1
 2020/01/27,Solomon Islands,6.3
 2020/01/26,United States,6.1
 2020/01/24,Turkey,6.7
@@ -825,9 +826,9 @@
 2020/01/19,China,6.0
 2020/01/18,Indonesia,6.0
 2020/01/09,Russia,6.4
-2020/01/07,Indonesia,6.3
 2020/01/07,Papua New Guinea,6.0
 2020/01/07,United States,6.4
+2020/01/07,Indonesia,6.3
 2019/12/25,southern East Pacific Rise,6.1
 2019/12/25,Canada,6.3
 2019/12/24,Colombia,6.0
@@ -869,8 +870,8 @@
 2019/09/27,New Zealand,6.1
 2019/09/26,Argentina,6.1
 2019/09/25,Indonesia,6.5
-2019/09/24,United States,6.0
 2019/09/24,Southwest Indian Ridge,6.0
+2019/09/24,United States,6.0
 2019/09/19,Indonesia,6.1
 2019/09/01,Fiji region,6.6
 2019/08/29,United States,6.3
@@ -932,8 +933,8 @@
 2019/04/23,Philippines,6.4
 2019/04/22,South Sandwich Islands region,6.0
 2019/04/22,Philippines,6.1
-2019/04/18,Taiwan,6.1
 2019/04/18,western Indian-Antarctic Ridge,6.3
+2019/04/18,Taiwan,6.1
 2019/04/12,Papua New Guinea,6.0
 2019/04/12,Tonga,6.0
 2019/04/12,Indonesia,6.8
@@ -1011,9 +1012,9 @@
 2018/10/16,New Caledonia,6.5
 2018/10/16,New Caledonia,6.3
 2018/10/13,Russia,6.7
+2018/10/10,Indonesia,6.0
 2018/10/10,Papua New Guinea,7.0
 2018/10/10,Papua New Guinea,6.1
-2018/10/10,Indonesia,6.0
 2018/10/10,Papua New Guinea,6.2
 2018/10/10,Russia,6.5
 2018/10/09,Russia,6.1
