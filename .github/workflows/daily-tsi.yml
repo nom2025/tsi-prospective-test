@@ -1,11 +1,12 @@
 name: Daily TSI Prospective Test
 
 on:
-  schedule:
-    # 毎日 00:00 UTC = 09:00 JST
-    # GEONETデータは日本時間の営業時間中に更新されるため
-    - cron: '0 0 * * *'
-  workflow_dispatch: # 手動実行も可能
+  # schedule: 2026-05-31 無効化（局ID誤りにより前向き検証中止。アーカイブ用に workflow_dispatch のみ残す）
+  # schedule:
+  #   # 毎日 00:00 UTC = 09:00 JST
+  #   # GEONETデータは日本時間の営業時間中に更新されるため
+  #   - cron: '0 0 * * *'
+  workflow_dispatch: # 手動実行のみ
 
 # 同時実行防止（前の実行が終わるまで待つ）
 concurrency:
